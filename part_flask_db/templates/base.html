@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{%block title%} Flasky{%endblock%}</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        {%block page_content%}
+        {%endblock%}
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+    <footer>
+        <div class="container">
+            <p>Flasky - A Simple Flask Application</p>
+        </div>
+    </footer>
+    {%block scripts%}
+    {%endblock%}
+</html>
