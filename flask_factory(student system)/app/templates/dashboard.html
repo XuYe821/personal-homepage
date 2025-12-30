@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}
+    信息页
+{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h1>Student Records</h1> 
+    <div>
+        <a href="{{ url_for('main.dashboard') }}" class="btn btn-primary btn-xs">所有学生</a>
+        {% for m in majors %}
+            <a href="{{ url_for('main.filter_by_major', major_id=m.id) }}" class="btn btn-default btn-xs">{{ m.major_name }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+<h4>{{studs|length}} students</h4>
+{%for stud in studs%}
+<div>
+    <p>{{stud.student_name}}</p>
+<div>
+    <p>
+        {% if stud.major %}
+            <span class="label label-info">{{ stud.major.major_name }}</span>
+        {% else %}
+            <span class="label label-default">未分配专业</span>
+        {% endif %}
+    </p>
+    
+    {% if current_user.role == 'admin' %}
+    <a class="btn" href="{{url_for('main.edit_stud',stu_id=stud.student_id)}}">Edit</a> 
+    <a class="btn" href="{{url_for('main.delete_stud',stu_id=stud.student_id)}}">Delete</a> 
+    {% endif %}
+</div>
+{%endfor%}
+{% endblock %}

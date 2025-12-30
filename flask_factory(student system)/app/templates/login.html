@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}
+    登录
+{% endblock %}
+{% block content %}
+<body>
+    <div class="container">
+        <h1>用户登录</h1>
+        <div class="row">
+            <div class="col-md-8" style="text-shadow: #e2f9ff 0px 0px 3px;">
+
+                <div class="h1 text-center" style="font-size: 25px; color: #3c4861; margin-top: 10%;" id="hitokoto-text"></div>
+                <div class="h1 text-right" style="font-size: 20px; color: #3c4861; margin-top: 20px; margin-right: 10px;" id="hitokoto-from"></div>
+
+            </div>
+            <div class="col-md-4">
+                <form action="{{ url_for('auth.login') }}" method="post" role="form">
+                    <div class="form-group">
+                        <label for="username">用户名:</label>
+                        <input type="text" id="username" class="form-control" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码:</label>
+                        <input type="password" id="password" class="form-control" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember"> 记住我
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="登录" class="btn btn-primary btn-block">
+                        <input type="reset" value="重置" class="btn btn-danger btn-block">
+                        <br>
+                        <a href="{{ url_for('auth.signup') }}" class="btn btn-success btn-block">注册</a>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock %}
